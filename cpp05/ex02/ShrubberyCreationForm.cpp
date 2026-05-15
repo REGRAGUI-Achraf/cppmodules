@@ -1,5 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 
+#include "Bureaucrat.hpp"
+
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -26,7 +28,12 @@ const std::string& ShrubberyCreationForm::getTarget() const {
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
-    assertExecutable(executor);
+    if (!isSigned()) {
+        throw AForm::FormNotSignedException();
+    }
+    if (executor.getGrade() > getGradeToExecute()) {
+        throw AForm::GradeTooLowException();
+    }
 
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file) {

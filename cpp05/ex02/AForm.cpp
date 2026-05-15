@@ -53,15 +53,6 @@ void AForm::beSigned(const Bureaucrat& bureaucrat) {
     signed_ = true;
 }
 
-void AForm::assertExecutable(Bureaucrat const& executor) const {
-    if (!signed_) {
-        throw FormNotSignedException();
-    }
-    if (executor.getGrade() > gradeToExecute) {
-        throw GradeTooLowException();
-    }
-}
-
 const char* AForm::GradeTooHighException::what() const throw() {
     return "Form grade too high";
 }

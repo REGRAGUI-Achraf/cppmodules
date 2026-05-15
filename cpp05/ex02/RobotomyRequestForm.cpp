@@ -1,5 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 
+#include "Bureaucrat.hpp"
+
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -28,14 +30,13 @@ const std::string& RobotomyRequestForm::getTarget() const {
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
-    assertExecutable(executor);
-
-    static bool seeded = false;
-    if (!seeded) {
-        std::srand(static_cast<unsigned int>(std::time(0)));
-        seeded = true;
+    if (!isSigned()) {
+        throw AForm::FormNotSignedException();
     }
-
+    if (executor.getGrade() > getGradeToExecute()) {
+        throw AForm::GradeTooLowException();
+    }
+    
     std::cout << "* drilling noises *" << std::endl;
     if (std::rand() % 2) {
         std::cout << target << " has been robotomized successfully" << std::endl;

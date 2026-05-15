@@ -4,11 +4,13 @@
 #include "AForm.hpp"
 
 #include <string>
+#include <iostream>
+#include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm {
 public:
     PresidentialPardonForm();
-    explicit PresidentialPardonForm(const std::string& target);
+    PresidentialPardonForm(const std::string& target);
     PresidentialPardonForm(const PresidentialPardonForm& other);
     PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
     ~PresidentialPardonForm();

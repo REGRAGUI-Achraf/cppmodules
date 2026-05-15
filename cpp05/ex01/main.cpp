@@ -7,7 +7,7 @@ int main()
 {
     try
     {
-        Bureaucrat chief("Chief", 1);
+        Bureaucrat chief("Chief", 20);
         Form permit("TopSecret", 10, 10);
         std::cout << chief << std::endl;
         std::cout << permit << std::endl;

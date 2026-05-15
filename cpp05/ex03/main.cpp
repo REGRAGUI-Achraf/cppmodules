@@ -1,38 +1,85 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
-
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 
-int main() {
+int main()
+{
+    // Créons un stagiaire
     Intern intern;
     Bureaucrat chief("Chief", 1);
     Bureaucrat manager("Manager", 70);
     Bureaucrat internBureaucrat("Intern", 150);
 
-    AForm* rrf = intern.makeForm("robotomy request", "Bender");
-    AForm* scf = intern.makeForm("shrubbery creation", "home");
-    AForm* ppf = intern.makeForm("presidential pardon", "Arthur");
-    AForm* unknown = intern.makeForm("unknown", "nowhere");
+    AForm* form;
 
-    if (rrf) {
-        manager.signForm(*rrf);
-        chief.executeForm(*rrf);
+    std::cout << "--- Test 1: Intern creates a ShrubberyCreationForm ---" << std::endl;
+    try
+    {
+        form = intern.makeForm("shrubbery creation", "garden");
+        if (form)
+        {
+            std::cout << "Intern created " << form->getName() << std::endl;
+            manager.signForm(*form);
+            chief.executeForm(*form);
+            delete form;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << '\n';
     }
 
-    if (scf) {
-        internBureaucrat.signForm(*scf);
-        chief.executeForm(*scf);
+    std::cout << "--- Test 2: Intern creates a RobotomyRequestForm ---" << std::endl;
+    try
+    {
+        form = intern.makeForm("robotomy request", "Bender");
+        if (form)
+        {
+            std::cout << "Intern created " << form->getName() << std::endl;
+            manager.signForm(*form);
+            chief.executeForm(*form);
+            delete form;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << '\n';
     }
 
-    if (ppf) {
-        chief.signForm(*ppf);
-        chief.executeForm(*ppf);
+    std::cout << "--- Test 3: Intern creates a PresidentialPardonForm ---" << std::endl;
+    try
+    {
+        form = intern.makeForm("presidential pardon", "Ford");
+        if (form)
+        {
+            std::cout << "Intern created " << form->getName() << std::endl;
+            manager.signForm(*form);
+            chief.executeForm(*form);
+            delete form;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << '\n';
     }
 
-    delete rrf;
-    delete scf;
-    delete ppf;
-    delete unknown;
+    std::cout << "--- Test 4: Intern fails to create an unknown form ---" << std::endl;
+    try
+    {
+        form = intern.makeForm("invalid form type", "target");
+        if (!form)
+        {
+            std::cout << "Intern could not create the form: type unknown." << std::endl;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Intern could not create form because: " << e.what() << '\n';
+    }
 
     return 0;
 }
