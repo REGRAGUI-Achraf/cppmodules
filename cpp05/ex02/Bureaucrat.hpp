@@ -4,6 +4,9 @@
 #include <exception>
 #include <iosfwd>
 #include <string>
+#include <iostream>
+#include <ostream>
+#include "AForm.hpp"
 
 class AForm;
 

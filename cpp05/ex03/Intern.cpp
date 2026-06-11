@@ -1,12 +1,5 @@
 #include "Intern.hpp"
 
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-
-#include <cstddef>
-#include <iostream>
-
 static AForm* createShrubbery(const std::string& target) {
     return new ShrubberyCreationForm(target);
 }

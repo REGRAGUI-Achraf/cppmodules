@@ -2,7 +2,8 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
-
+#include "Bureaucrat.hpp"
+#include <fstream>
 #include <string>
 
 class ShrubberyCreationForm : public AForm {

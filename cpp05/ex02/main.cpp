@@ -3,8 +3,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-#include <iostream>
-
 int main() {
     Bureaucrat chief("Chief", 1);
     Bureaucrat manager("Manager", 70);

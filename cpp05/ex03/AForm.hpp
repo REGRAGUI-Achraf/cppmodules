@@ -4,6 +4,8 @@
 #include <exception>
 #include <iosfwd>
 #include <string>
+#include "Bureaucrat.hpp"
+#include <ostream>
 
 class Bureaucrat;
 

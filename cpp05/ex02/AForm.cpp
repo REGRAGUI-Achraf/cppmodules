@@ -1,9 +1,5 @@
 #include "AForm.hpp"
 
-#include "Bureaucrat.hpp"
-
-#include <ostream>
-
 AForm::AForm() : name("AForm"), signed_(false), gradeToSign(150), gradeToExecute(150) {}
 
 AForm::AForm(const std::string& name, int gradeToSign, int gradeToExecute)
@@ -66,8 +62,13 @@ const char* AForm::FormNotSignedException::what() const throw() {
 }
 
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
-    os << "Form " << form.getName() << ", signed " << (form.isSigned() ? "true" : "false")
-       << ", grade to sign " << form.getGradeToSign() << ", grade to execute "
+    os << "Form " << form.getName() << ", signed ";
+    if (form.isSigned())
+        os << "true";
+    else 
+        os << "false";
+    
+    os << ", grade to sign " << form.getGradeToSign() << ", grade to execute "
        << form.getGradeToExecute() << ".";
     return os;
 }

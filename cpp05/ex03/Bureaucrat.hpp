@@ -1,9 +1,12 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include "AForm.hpp"
 #include <exception>
 #include <iosfwd>
 #include <string>
+#include <iostream>
+#include <ostream>
 
 class AForm;
 
