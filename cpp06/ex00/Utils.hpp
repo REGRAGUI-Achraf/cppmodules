@@ -3,13 +3,6 @@
 
 #include <string>
 
-const int LIT_PSEUDO = 0;
-const int LIT_CHAR = 1;
-const int LIT_INT = 2;
-const int LIT_FLOAT = 3;
-const int LIT_DOUBLE = 4;
-const int LIT_INVALID = 5;
-
 int detectLiteralType(const std::string& s);
 bool isCharLiteral(const std::string& s);
 bool isSingleChar(const std::string& s);

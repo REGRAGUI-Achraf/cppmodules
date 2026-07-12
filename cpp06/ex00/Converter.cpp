@@ -16,12 +16,12 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::convert(const std::string& literal) {
     int type = detectLiteralType(literal);
 
-    if (type == LIT_PSEUDO) {
+    if (type == 0) { // PSEUDO
         printPseudo(literal);
         return;
     }
 
-    if (type == LIT_INVALID) {
+    if (type == 5) { // INVALID
         std::cout << "char: impossible" << std::endl;
         std::cout << "int: impossible" << std::endl;
         std::cout << "float: impossible" << std::endl;

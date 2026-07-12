@@ -7,19 +7,19 @@ static double parseNumber(const std::string& s) {
 }
 
 double parseLiteralToDouble(const std::string& literal, int type) {
-    if (type == LIT_CHAR) {
+    if (type == 1) { // CHAR
         if (isCharLiteral(literal)) {
             return static_cast<double>(literal[1]);
         }
         return static_cast<double>(literal[0]);
     }
-    if (type == LIT_INT) {
+    if (type == 2) { // INT
         return parseNumber(literal);
     }
-    if (type == LIT_FLOAT) {
+    if (type == 3) { // FLOAT
         return parseNumber(literal.substr(0, literal.length() - 1));
     }
-    if (type == LIT_DOUBLE) {
+    if (type == 4) { // DOUBLE
         return parseNumber(literal);
     }
     return 0.0;

@@ -91,19 +91,19 @@ static bool isIntLiteral(const std::string& s) {
 
 int detectLiteralType(const std::string& s) {
     if (isPseudoLiteral(s)) {
-        return LIT_PSEUDO;
+        return 0; // PSEUDO
     }
     if (isCharLiteral(s) || isSingleChar(s)) {
-        return LIT_CHAR;
+        return 1; // CHAR
     }
     if (isFloatLiteral(s)) {
-        return LIT_FLOAT;
+        return 3; // FLOAT
     }
     if (isDoubleLiteral(s)) {
-        return LIT_DOUBLE;
+        return 4; // DOUBLE
     }
     if (isIntLiteral(s)) {
-        return LIT_INT;
+        return 2; // INT
     }
-    return LIT_INVALID;
+    return 5; // INVALID
 }

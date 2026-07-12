@@ -21,25 +21,25 @@ public:
     bool isSigned() const;
     int getGradeToSign() const;
     int getGradeToExecute() const;
-
-    void beSigned(const Bureaucrat& bureaucrat);
     virtual void execute(Bureaucrat const& executor) const = 0;
 
+    void beSigned(const Bureaucrat& bureaucrat);
+    
     class GradeTooHighException : public std::exception {
-    public:
+        public:
         const char* what() const throw();
     };
-
+    
     class GradeTooLowException : public std::exception {
-    public:
+        public:
         const char* what() const throw();
     };
-
+    
     class FormNotSignedException : public std::exception {
-    public:
+        public:
         const char* what() const throw();
     };
-
+    
 protected:
     void assertExecutable(Bureaucrat const& executor) const;
 
