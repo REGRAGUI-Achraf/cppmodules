@@ -4,7 +4,6 @@
 #include <ctime>
 
 int main() {
-    // srand() est appele UNE SEULE FOIS, ici, au debut du programme.
     srand(static_cast<unsigned int>(time(NULL)));
 
     for (int i = 0; i < 10; i++) {

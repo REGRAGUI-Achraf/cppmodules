@@ -3,7 +3,7 @@ NAME = convert
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Converter.cpp Detect.cpp Parse.cpp Print.cpp
+SRCS = main.cpp Converter.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

@@ -4,7 +4,7 @@
 #include <ctime>
 #include <iostream>
 
-Base* generate(void) {
+Base* generate() {
     static bool seeded = false;
     if (!seeded) {
         std::srand(static_cast<unsigned int>(std::time(NULL)));
@@ -24,19 +24,18 @@ void identify(Base* p) {
 }
 
 void identify(Base& p) {
-    // try dynamic_cast to references via pointer technique
     try {
-        (void)dynamic_cast<A&>(p);
+        dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
         return;
     } catch (...) {}
     try {
-        (void)dynamic_cast<B&>(p);
+        dynamic_cast<B&>(p);
         std::cout << "B" << std::endl;
         return;
     } catch (...) {}
     try {
-        (void)dynamic_cast<C&>(p);
+        dynamic_cast<C&>(p);
         std::cout << "C" << std::endl;
         return;
     } catch (...) {}

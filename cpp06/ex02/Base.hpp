@@ -6,4 +6,4 @@ public:
     virtual ~Base() {}
 };
 
-#endif // BASE_HPP
+#endif

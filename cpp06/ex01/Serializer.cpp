@@ -1,6 +1,5 @@
 #include "Serializer.h"
 
-// Definitions for C++98: simple reinterpret_cast-based conversions.
 uintptr_t Serializer::serialize(Data* ptr) {
     return reinterpret_cast<uintptr_t>(ptr);
 }
